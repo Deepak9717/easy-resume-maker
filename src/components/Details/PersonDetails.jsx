@@ -20,6 +20,7 @@ export default function PersonDetails() {
               name="name"
               value={person.name}
               onChange={handleChange}
+              placeholder="Ex: John"
             />
           </div>
           <div>
@@ -29,6 +30,7 @@ export default function PersonDetails() {
               name="role"
               value={person.role}
               onChange={handleChange}
+              placeholder="Ex: Data Scientist"
             />
           </div>
           <div>
@@ -38,6 +40,7 @@ export default function PersonDetails() {
               name="intro"
               value={person.intro}
               onChange={handleChange}
+              placeholder="Write about your career objective or yourself"
             />
           </div>
 
@@ -48,6 +51,7 @@ export default function PersonDetails() {
               name="email"
               value={person.email}
               onChange={handleChange}
+              placeholder="abc@gmail.com"
             />
           </div>
           <div>

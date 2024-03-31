@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useData } from "../Context";
+import { FaTrash } from "react-icons/fa";
 
 export default function EduDetails() {
+  const [clicked, setClicked] = useState(false);
   const { educationList, setEducationList } = useData();
   const [education, setEducation] = useState({
     degree: "",
@@ -11,13 +13,21 @@ export default function EduDetails() {
     grade: "",
   });
 
+  const deleteEducation = (id) => {
+    setEducationList(educationList.filter((elem) => elem.id !== id));
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
+    setClicked(true);
 
-    const updateEdu = { ...education, id: educationList.length + 1 };
-    const updateEduList = [...educationList, updateEdu];
+    if (education.degree != "" && education.school != "") {
+      const updateEdu = { ...education, id: educationList.length + 1 };
+      const updateEduList = [...educationList, updateEdu];
 
-    setEducationList(updateEduList);
+      setEducationList(updateEduList);
+    }
+
     setEducation({
       degree: "",
       school: "",
@@ -44,6 +54,7 @@ export default function EduDetails() {
               name="degree"
               value={education.degree}
               onChange={(e) => handleChange(e)}
+              placeholder="Ex: B.Sc.Chemistry"
             />
           </div>
           <div>
@@ -53,6 +64,7 @@ export default function EduDetails() {
               name="school"
               value={education.school}
               onChange={(e) => handleChange(e)}
+              placeholder="Ex: Boston University"
             />
           </div>
           <div>
@@ -80,12 +92,25 @@ export default function EduDetails() {
               name="grade"
               value={education.grade}
               onChange={(e) => handleChange(e)}
+              placeholder="CGPA"
             />
           </div>
         </div>
         <button className="add-btn" type="submit">
           Add Education
         </button>
+        {clicked && educationList.length === 0 && (
+          <div className="alert-msg">Please enter education details</div>
+        )}
+
+        {educationList.map((education, index) => (
+          <div key={index} className="list">
+            <span>{education.degree + ", " + education.school + "..."}</span>
+            <button onClick={() => deleteEducation(education.id)}>
+              <FaTrash />
+            </button>
+          </div>
+        ))}
       </form>
     </>
   );

@@ -12,8 +12,8 @@ function App() {
   return (
     <DataProvider>
     <div >  
+    <BrowserRouter>
         <Header />
-        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/create-resume" element={<Main />} />

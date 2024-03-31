@@ -6,7 +6,7 @@ export default function Footer(){
     return(
         <>
             <footer>
-                <span>Easy Resume Maker @<span style={{ fontWeight:600}}>{currentYear}</span></span>
+                <span>Eazy Resume Maker @<span style={{ fontWeight:600}}>{currentYear}</span></span>
             </footer>
         </>
     )

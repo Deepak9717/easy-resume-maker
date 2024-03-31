@@ -48,7 +48,7 @@ export default function Skills() {
         </div>
 
         {skills.map((skill, index) => (
-          <div key={index} className="skillList">
+          <div key={index} className="list">
             <span>{skill.name}</span>
             <button onClick={() => deleteSkill(skill.id)}>
               <FaTrash />

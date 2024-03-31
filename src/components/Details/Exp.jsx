@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 import { useData } from "../Context";
 
 export default function Exp() {
+  const [clicked, setClicked] = useState(false);
   const { workList, setWorkList } = useData();
   const [work, setWork] = useState({
     position: "",
@@ -18,20 +20,27 @@ export default function Exp() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setClicked(true);
 
-    const newWork = { ...work, id: workList.length + 1 };
-    const newWorkList = [...workList, newWork];
+    if (work.position != "" && work.company != "") {
+      const newWork = { ...work, id: workList.length + 1 };
+      const newWorkList = [...workList, newWork];
 
-    setWorkList(newWorkList);
+      setWorkList(newWorkList);
+    }
+
     setWork({
-        position: "",
-        company: "",
-        startYr: "",
-        endYr: "",
-        description: "",
+      position: "",
+      company: "",
+      startYr: "",
+      endYr: "",
+      description: "",
     });
   }
 
+  const deleteWork = (id) => {
+    setWorkList(workList.filter((elem) => elem.id !== id));
+  };
   return (
     <>
       <form className="section" onSubmit={(e) => handleSubmit(e)}>
@@ -44,6 +53,7 @@ export default function Exp() {
               name="position"
               value={work.position}
               onChange={(e) => handleChange(e)}
+              placeholder="Ex: Data Scientist"
             />
           </div>
           <div>
@@ -53,6 +63,7 @@ export default function Exp() {
               name="company"
               value={work.company}
               onChange={(e) => handleChange(e)}
+              placeholder="Ex: Microsoft"
             />
           </div>
           <div>
@@ -86,6 +97,19 @@ export default function Exp() {
         <button className="add-btn" type="submit">
           Add Experience
         </button>
+
+        {clicked && workList.length === 0 && (
+          <div className="alert-msg">Please enter work experice</div>
+        )}
+
+        {workList.map((work, index) => (
+          <div key={index} className="list">
+            <span>{work.position + ", " + work.company}</span>
+            <button onClick={() => deleteWork(work.id)}>
+              <FaTrash />
+            </button>
+          </div>
+        ))}
       </form>
     </>
   );

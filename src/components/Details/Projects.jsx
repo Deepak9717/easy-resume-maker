@@ -1,27 +1,35 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 import { useData } from "../Context";
 
 export default function Projects() {
+  const [clicked, setClicked] = useState(false);
   const { projects, setProjects } = useData();
-  const [project ,setProject] = useState({
-      name: "",
-      description: "",
-      url: "",
+  const [project, setProject] = useState({
+    name: "",
+    description: "",
+    url: "",
   });
 
-  function handleChange(e){
-    let newProject = { ...project, [e.target.name] : e.target.value };
-    setProject(newProject);
+  const deleteProject = (id) => {
+    setProjects(projects.filter((elem) => elem.id !== id));
+  };
 
+  function handleChange(e) {
+    let newProject = { ...project, [e.target.name]: e.target.value };
+    setProject(newProject);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    setClicked(true);
 
-    const newProject = { ...project, id: projects.length + 1 };
-    const newProjects = [...projects, newProject];
+    if (project.name != "" && project.description != "") {
+      const newProject = { ...project, id: projects.length + 1 };
+      const newProjects = [...projects, newProject];
 
-    setProjects(newProjects);
+      setProjects(newProjects);
+    }
     setProject({
       name: "",
       description: "",
@@ -41,6 +49,7 @@ export default function Projects() {
               name="name"
               value={project.name}
               onChange={(e) => handleChange(e)}
+              placeholder="Ex: E-commerce site"
             />
           </div>
           <div>
@@ -59,12 +68,25 @@ export default function Projects() {
               name="url"
               value={project.url}
               onChange={(e) => handleChange(e)}
+              placeholder="Ex: https://project.com"
             />
           </div>
         </div>
         <button className="add-btn" type="submit">
           Add Project
         </button>
+        {clicked && projects.length === 0 && (
+          <div className="alert-msg">Please enter project</div>
+        )}
+
+        {projects.map((project, index) => (
+          <div key={index} className="list">
+            <span>{project.name}</span>
+            <button onClick={() => deleteProject(project.id)}>
+              <FaTrash />
+            </button>
+          </div>
+        ))}
       </form>
     </>
   );
