@@ -253,7 +253,7 @@ footer div span {
 }
 .template {
   width: 50rem;
-  height: 70.2rem;
+  height: 70.1rem;
   outline: 1px solid black;
 }
 .minimalist {
@@ -311,7 +311,8 @@ footer div span {
 }
 .col-body {
   display: flex;
-  height: 61.2rem;
+  height: 61.1rem;
+  overflow: hidden;
 }
 .left-body {
   width: 15rem;
@@ -357,7 +358,7 @@ footer div span {
   filter: invert(10%);
 }
 .wide-width {
-  position: static;
+  position: relative;
 }
 @media screen and (max-width: 1200px) {
   .wide-width {
