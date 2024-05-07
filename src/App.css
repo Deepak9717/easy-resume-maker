@@ -253,7 +253,7 @@ footer div span {
 }
 .template {
   width: 50rem;
-  height: 70rem;
+  height: 70.2rem;
   outline: 1px solid black;
 }
 .minimalist {
@@ -311,12 +311,11 @@ footer div span {
 }
 .col-body {
   display: flex;
-  height: 61.5rem;
+  height: 61.2rem;
 }
 .left-body {
   width: 15rem;
   padding: 0.25rem 1.5rem;
-  overflow: hidden;
   background-color: rgb(226, 224, 224);
 }
 .left-body h2 {
