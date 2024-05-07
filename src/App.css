@@ -311,12 +311,12 @@ footer div span {
 }
 .col-body {
   display: flex;
-  height: 61.3rem;
-  overflow: hidden;
+  height: 61.5rem;
 }
 .left-body {
   width: 15rem;
   padding: 0.25rem 1.5rem;
+  overflow: hidden;
   background-color: rgb(226, 224, 224);
 }
 .left-body h2 {
@@ -358,7 +358,7 @@ footer div span {
   filter: invert(10%);
 }
 .wide-width {
-  position: relative;
+  position: static;
 }
 @media screen and (max-width: 1200px) {
   .wide-width {
@@ -374,8 +374,5 @@ footer div span {
   }
   .heading p {
     font-size: 1rem;
-  }
-  footer{
-    height:4rem;
   }
 }
