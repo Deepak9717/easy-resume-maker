@@ -24,6 +24,7 @@ export const DataProvider = ({ children }) => {
     skillBg: "#0000ff",
   });
   const [tempChange, setTempChange] = useState(false);
+  const [route, setRoute] = useState(false);
 
   const value = {
     person,
@@ -40,6 +41,8 @@ export const DataProvider = ({ children }) => {
     setTempColor,
     tempChange,
     setTempChange,
+    route,
+    setRoute,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
