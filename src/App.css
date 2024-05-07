@@ -24,7 +24,7 @@
 }
 
 /* Footer CSS*/
-footer {
+footer div {
   width: 100%;
   height: 3rem;
   display: flex;
@@ -32,13 +32,12 @@ footer {
   align-items: center;
   background-color: rgb(220, 220, 220);
 }
-footer span {
+footer div span {
   font-size: 1.075rem;
 }
 /*Home Css*/
 .heading {
-  width: 100%;
-  height: 81.5vh;
+  height: 84vh;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -76,6 +75,7 @@ footer span {
   color: white;
 }
 .container {
+  width: max-content;
   display: flex;
 }
 .data-section {
@@ -148,7 +148,7 @@ footer span {
   outline: 1px solid rgb(24, 94, 245);
   box-shadow: 0 0 5px rgb(35, 98, 235);
 }
-.color{
+.color {
   padding: 1rem 1.5rem;
   background: rgb(192, 191, 192);
   display: flex;
@@ -156,11 +156,11 @@ footer span {
   row-gap: 0.5rem;
   border-bottom: 1px solid grey;
 }
-.color div{
+.color div {
   display: flex;
   flex-direction: column;
 }
-.color div label{
+.color div label {
   font-weight: 600;
 }
 .add-btn {
@@ -248,7 +248,7 @@ footer span {
 }
 .template {
   width: 50rem;
-  height: 70rem;
+  height: 70.4rem;
   outline: 1px solid black;
 }
 .minimalist {
@@ -310,13 +310,13 @@ footer span {
 }
 .left-body {
   width: 15rem;
-  padding: 0.25rem 1.5rem ;
+  padding: 0.25rem 1.5rem;
   background-color: rgb(211, 209, 209);
 }
-.left-body h2{
+.left-body h2 {
   font-weight: 700 !important;
 }
-.left-body .contact{
+.left-body .contact {
   font-weight: 600;
 }
 .right-body {
@@ -335,7 +335,7 @@ footer span {
   font-weight: 600;
   border-radius: 1rem;
 }
-.download-btn{
+.download-btn {
   width: 9rem;
   height: 2.1rem;
   margin-right: 2.5rem;
@@ -347,7 +347,28 @@ footer span {
   border-radius: 3px;
   border: 1px solid transparent;
 }
-.download-btn:hover{
+.download-btn:hover {
   border: 1px solid black;
   filter: invert(10%);
+}
+@media screen and (max-width: 1200px) {
+  .wide-width {
+    width: 1188px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .heading {
+    height: 77vh;
+  }
+  .heading h1 {
+    font-size: 2.5rem;
+  }
+  .heading p {
+    font-size: 1rem;
+  }
+  footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
 }
